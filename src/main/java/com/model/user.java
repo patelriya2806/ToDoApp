@@ -1,7 +1,7 @@
 package com.model;
 
 public class user {
-    private String userID;
+    private int userID;
     private String username;
     private String email;
     private String password;
@@ -15,7 +15,7 @@ public class user {
     }
 
     //getters
-    public String getUserID() {
+    public int getUserId() {
         return userID;
     }
     public String getUsername() {
@@ -37,7 +37,7 @@ public class user {
     public void setPassword(String pass) {
         this.password = pass;
     }
-    public void setUserID(String userID) {
+    public void setUserId(int userID) {
         this.userID = userID;
     }
 

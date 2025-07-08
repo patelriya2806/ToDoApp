@@ -16,7 +16,7 @@ public class userDAO {
     }
 
     public int getUserId(String email) throws SQLException {
-        String query = "select id from user where email = ?";
+        String query = "select id from users where email = ?";
         PreparedStatement ps = conn.prepareStatement(query);
         ps.setString(1,email);
         ResultSet rs = ps.executeQuery();

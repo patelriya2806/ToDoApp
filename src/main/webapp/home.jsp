@@ -19,7 +19,7 @@
 
 </head>
 <body class="d-flex flex-column min-vh-100">
-<script src = "homeScript.js" ></script>
+<script src = "scriptHome.js" ></script>
 <%
     user currentUser = (user) session.getAttribute("user");
     if (currentUser == null) {
