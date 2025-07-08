@@ -41,7 +41,6 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
             </div>
-
             <%
                 String error = request.getParameter("error");
                 if("invalid".equals(error)){
