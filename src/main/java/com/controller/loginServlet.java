@@ -27,8 +27,11 @@ public class loginServlet extends HttpServlet {
             String username = user.authenticate(email,password);
             if(username!=null){
                 HttpSession session = req.getSession();
-                session.setAttribute("email", email);
-                res.sendRedirect("home.jsp");
+                user newUser = new user();
+                newUser.setEmail(email);
+                newUser.setName(username);
+                session.setAttribute("user", newUser);
+                res.sendRedirect("dashboard");
             }
             else{
                 res.sendRedirect("login.jsp?error=invalid");
