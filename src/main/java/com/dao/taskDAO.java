@@ -45,7 +45,11 @@ public class taskDAO {
         return tasks;
     }
 
-    public void deleteTask(String task_id) throws SQLException {
+    public void deleteTask(int task_id) throws SQLException {
+
+    }
+
+    public void fetchTaskId(String task) throws SQLException {
 
     }
 

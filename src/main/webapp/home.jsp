@@ -75,7 +75,7 @@
 <!-- Bottom nav -->
 <nav class="navbar fixed-bottom bg-light border-top">
     <div class="container-fluid justify-content-around px-0">
-        <a href="home.jsp" class="nav-link text-center active">
+        <a href="dashboard" class="nav-link text-center active">
             <i class="bi bi-house-door-fill fs-4 d-block"></i>
             <small>Home</small>
         </a>
