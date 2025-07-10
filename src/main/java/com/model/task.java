@@ -5,15 +5,24 @@ import java.util.List;
 
 public class task {
     private int id;
-    private List<String> tasks = new ArrayList<String>();
+    private int user_id;
+    private String task;
     private String status;
 
-    public List<String> getTasks() {
-        return tasks;
+    public int getId() {
+        return id;
     }
 
-    public void setTasks(List<String> tasks) {
-        this.tasks = tasks;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTask() {
+        return task;
+    }
+
+    public void setTask(String task) {
+        this.task = task;
     }
 
 }

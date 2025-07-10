@@ -30,8 +30,8 @@ public class taskDAO {
 
     }
 
-    public List<String> fetchAllTasks(String email) throws SQLException {
-        List<String> tasks=new ArrayList<>();
+    public List<task> fetchAllTasks(String email) throws SQLException {
+        List<task> taskList=new ArrayList<>();
 
         userDAO user = new userDAO(conn);
         int user_id = user.getUserId(email);
@@ -40,17 +40,25 @@ public class taskDAO {
         ps.setInt(1, user_id);
         ResultSet rs = ps.executeQuery();
         while(rs.next()) {
-            tasks.add(rs.getString("text"));
+            task task = new task();
+            task.setId(rs.getInt("id"));
+            task.setTask(rs.getString("text"));
+            taskList.add(task);
         }
-        return tasks;
+        return taskList;
     }
 
-    public void deleteTask(int task_id) throws SQLException {
-
-    }
-
-    public void fetchTaskId(String task) throws SQLException {
-
+    public boolean deleteTask(int task_id) throws SQLException {
+        String query = "delete from tasks where id=? ";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setInt(1, task_id);
+        int deleted = ps.executeUpdate();
+        if(deleted==1) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public boolean taskStatus(String task_id) throws SQLException {

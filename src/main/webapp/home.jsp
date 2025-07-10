@@ -2,6 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="com.model.user"%>
+<%@ page import="com.model.task"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
 <body class="d-flex flex-column min-vh-100">
 <script src = "scriptHome.js" ></script>
 <%
-    user currentUser = (user) session.getAttribute("user");
+    user currentUser = (user) session.getAttribute("newUser");
     if (currentUser == null) {
         response.sendRedirect("login.jsp");
         return;
@@ -40,7 +41,7 @@
         </form>
 
         <%
-            List<String> tasks = (List<String>) request.getAttribute("tasks");
+            List<task> taskList = (List<task>) request.getAttribute("taskList");
         %>
 
         <!-- Task list -->
@@ -53,12 +54,16 @@
                 <button class="btn btn-sm btn-outline-danger delete-btn ms-2" title="Delete"><i class="bi bi-trash"></i></button>
                 </form>
             </li>
-            <% if (tasks != null) {
-                for (String task : tasks) { %>
+            <% if (taskList != null) {
+                for (task task : taskList) {
+                String newTask = task.getTask();
+                int taskId = task.getId();
+            %>
             <li class="list-group-item d-flex align-items-center">
                 <input class="form-check-input me-2" type="checkbox">
-                <span class="flex-grow-1"><%= task %></span>
+                <span class="flex-grow-1"><%= newTask %></span>
                 <form action="delete" method="post">
+                    <input type="hidden" name="taskId" value="<%= task.getId() %>">
                     <button class="btn btn-sm btn-outline-danger delete-btn ms-2" title="Delete">
                         <i class="bi bi-trash"></i>
                     </button>
