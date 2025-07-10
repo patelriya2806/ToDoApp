@@ -25,12 +25,14 @@ public class loginServlet extends HttpServlet {
 
             userDAO user = new userDAO(conn);
             String username = user.authenticate(email,password);
+            System.out.println(username);
             if(username!=null){
                 HttpSession session = req.getSession();
                 user newUser = new user();
                 newUser.setEmail(email);
-                newUser.setName(username);
-                session.setAttribute("user", newUser);
+                newUser.setUsername(username);
+                session.setAttribute("username",username);
+                session.setAttribute("newUser", newUser);
                 res.sendRedirect("dashboard");
             }
             else{

@@ -28,7 +28,7 @@ public class user {
         return password;
     }
     //setters
-    public void setName(String name) {
+    public void setUsername(String name) {
         this.username = name;
     }
     public void setEmail(String email) {

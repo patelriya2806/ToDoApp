@@ -23,17 +23,16 @@ public class dashboardServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        user newUser = (user)session.getAttribute("user");
+        user newUser = (user)session.getAttribute("newUser");
         try {
             Connection conn = DBconnection.getConnection();
             String email = newUser.getEmail();
 
             taskDAO task = new taskDAO(conn);
-            task task1 = new task();
-            List<String> tasks = task.fetchAllTasks(email);
-            task1.setTasks(tasks);
-            req.setAttribute("tasks", tasks);
-            for(String t : tasks){
+
+            List<task> taskList = task.fetchAllTasks(email);
+            req.setAttribute("taskList", taskList);
+            for(task t : taskList){
                 System.out.println(t);
             }
             RequestDispatcher rd = req.getRequestDispatcher("home.jsp");
