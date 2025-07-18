@@ -29,7 +29,7 @@ public class addTaskServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DBconnection.getConnection();
-            user newUser = (user)session.getAttribute("user");
+            user newUser = (user)session.getAttribute("newUser");
             String email = newUser.getEmail();
             String taskInput = req.getParameter("taskInput");
 

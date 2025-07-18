@@ -23,6 +23,11 @@ public class dashboardServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession session = req.getSession();
+        session = req.getSession(false);
+        if (session == null || session.getAttribute("newUser") == null) {
+            res.sendRedirect("login.jsp");
+            return;
+        }
         user newUser = (user)session.getAttribute("newUser");
         try {
             Connection conn = DBconnection.getConnection();
