@@ -3,6 +3,17 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.model.user"%>
 <%@ page import="com.model.task"%>
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+
+    session = request.getSession(false);
+    if (session == null || session.getAttribute("newUser") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,11 +33,16 @@
 <body class="d-flex flex-column min-vh-100">
 <script src = "scriptHome.js" ></script>
 <%
-    user currentUser = (user) session.getAttribute("newUser");
-    if (currentUser == null) {
-        response.sendRedirect("login.jsp");
-        return;
-    }
+//    user currentUser = (user) session.getAttribute("newUser");
+//    if (currentUser == null) {
+//        response.sendRedirect("login.jsp");
+//        return;
+//    }
+//    session = request.getSession(false);
+//    if (session == null || session.getAttribute("username") == null) {
+//        response.sendRedirect("login.jsp");
+//        return;
+//    }
 %>
 <!-- Main content -->
 <main class="container d-flex justify-content-center align-items-center flex-grow-1" style="min-height: 100vh;">
